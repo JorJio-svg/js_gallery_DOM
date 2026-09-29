@@ -5,6 +5,8 @@ const tumbnails = document.querySelector('#thumbs');
 
 // eslint-disable-next-line no-shadow
 tumbnails.addEventListener('click', (event) => {
+  event.preventDefault();
+
   const target = event.target;
 
   switch (target.tagName) {
