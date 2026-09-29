@@ -1,21 +1,18 @@
 'use strict';
 
-const largeImage = document.getElementById('largeImg');
-const tumbsCollection = document.querySelectorAll('ul li');
+const largeImg = document.querySelector('#largeImg');
+const tumbnails = document.querySelector('#thumbs');
 
-tumbsCollection.forEach((li) => {
-  const liLink = li.firstElementChild;
-  const liImg = liLink.firstElementChild;
-  const linkContent = liLink.href;
+// eslint-disable-next-line no-shadow
+tumbnails.addEventListener('click', (event) => {
+  const target = event.target;
 
-  if (liLink || liImg) {
-    liLink.addEventListener('click', () => {
-      liLink.href = '#';
-      largeImage.src = linkContent;
-    });
-
-    liImg.addEventListener('click', () => {
-      largeImage.src = liLink.href;
-    });
+  switch (target.tagName) {
+    case 'IMG':
+      largeImg.src = target.parentNode.href;
+      break;
+    case 'A':
+      largeImg.src = target.href;
+      break;
   }
 });
